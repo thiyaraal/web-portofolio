@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:web_portofolio/home_page.dart';
+import 'package:web_portofolio/secreen/example.dart';
+import 'package:web_portofolio/secreen/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: PortfolioPage());
+        home: PortfolioPage()
+        );
   }
 }

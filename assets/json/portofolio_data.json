@@ -1,0 +1,145 @@
+{
+  "biodata": {
+    "name": "Thiyara Al Mawaddah",
+    "description": "I’m a mobile app developer and designer who’s passionate about creating apps that are both functional and visually appealing. With skills in both development and UI/UX design, I love crafting mobile solutions that not only work smoothly but also offer a delightful user experience.",
+    "email": "thiyara@mail.com",
+    "resemu": "https://www.instagram.com/thiyara",
+
+    "contact": [
+      {
+        "phone": "Email",
+        "email": "mailto",
+        "instagram": "https://www.instagram.com/thiyara",
+        "linkedIn": "https://www.linkedin.com/in/thiyara",
+        "github": " https ",
+        "behance": "https://www.behance.net/thiyara"
+      }
+    ]
+  },
+  "services": [
+    {
+      "name": "Web App Development",
+      "description": "Develops modern websites with API integration, focusing on responsiveness and user experience. Uses the latest technologies for fast, scalable, and optimized web solutions."
+    },
+    {
+      "name": "Mobile App Developer",
+      "description": "Builds cross-platform mobile apps using Dart and Flutter, with smooth API integration. Ensures high performance on both Android."
+    },
+    {
+      "name": "UI/UX Design",
+      "description": "Designs user-centered interfaces using Design Thinking. Focuses on intuitive navigation and responsive layouts for all devices."
+    }
+  ],
+  "skills": [
+    "Flutter",
+    "Html & CSS",
+    "UI/UX Design",
+    "Figma",
+    "VSCode",
+    "Dart",
+    "Firebase",
+    "Git",
+    "API Integration",
+    "Postman",
+    "Suppabase"
+  ],
+  "projects": {
+    "app": [
+      {
+        "name": "MentorMatch App",
+        "date": "December 2023 - April 2024",
+        "description": "MentorMatch is a mentoring app built for both Android mobile devices and web platforms, connecting mentees with mentors to enhance their skills and knowledge. The app offers mentor search based on specific criteria, session scheduling, and feedback, creating a personalized and interactive learning experience.",
+        "link": "https://example.com",
+        "build_with": ["Flutter", "Dart", "Figma", "PostGreSQL", "Firebase"]
+      },
+      {
+        "name": "Sociops Apps",
+        "date": "May 2023 - August 2023",
+        "description": "Sociops is a fundraising app that helps donors and communities make contributions to those in need, such as orphans, disaster victims, and anyone requiring assistance. The app is built for Android mobile devices.",
+        "link": "https://ecommerce.example.com",
+        "build_with": ["Flutter", "Dart", "Firebase", "Golang(Go)", "Figma"]
+      },
+      {
+        "name": "Anugrah Lens Apps",
+        "date": "September 2024",
+        "description": "Anugrah Lens is an app for managing eyewear customer data that helps admins quickly and systematically add customer information, such as installment data and more. The app is available for Android mobile devices.",
+        "link": "https://ecommerce.example.com",
+        "build_with": ["Flutter", "Dart", "Figma", "PostGreSQL", "Firebase"]
+      }
+    ],
+    "design": [
+      {
+        "name": "Redesign RedDoorz App",
+        "date": "September 2023",
+        "description": "The redesign of the RedDoorz app was done using the Design Thinking method, starting with the problem observation stage. During this stage, user complaints and feedback were collected from various platforms. Then, ideas were developed, and a hi-fi prototype was designed, which was later tested by users to gather feedback",
+        "link": "https://www.behance.net/gallery/180662855/Redesign-Aplikasi-Reddooorz",
+        "tools_used": ["Figma", "Maze"]
+      },
+      {
+        "name": "Redesign Maxim Apps",
+        "date": "October 2022",
+        "description": "The redesign of the Maxim app was done using the Design Thinking method, starting with the problem observation stage. During this stage, user complaints and feedback were collected from various platforms. Then, ideas were developed, and a hi-fi prototype was designed, which was later tested by users to gather feedback",
+        "link": "https://www.behance.net/gallery/155363513/Redesign-Aplikasi-Maxim",
+        "tools_used": ["Figma", "Maze"]
+      },
+      {
+        "name": "Redesign Ferizy App",
+        "date": "Desember 2023",
+        "description": "The redesign of the Ferizy app was done using the Design Thinking method, starting with the problem observation stage. During this stage, user complaints and feedback were collected from various platforms. Then, ideas were developed, and a hi-fi prototype was designed, which was later tested by users to gather feedback",
+        "link": "https://www.behance.net/gallery/156012697/Redesign-Application-Website-Ferizy",
+        "tools_used": ["Figma", "Maze"]
+      },
+      {
+        "name": "Breathe Apps",
+        "date": "December 2022 - January 2023",
+        "description": "Designing a breathing application for anxiety sufferers begins with observing the issues through direct interviews with the patients to identify problems and generate ideas. This process continues to the development of a product design that can assist users, leading up to the testing phase.",
+        "link": "https://www.behance.net/gallery/160859285/UIUX-Case-Study-Breathe-Mental-Health-Anxiety-Design",
+        "tools_used": ["Figma", "Maze"]
+      }
+    ]
+  },
+  "experience": [
+    {
+      "name": "Mika UI/UX Redesign with Design Thinking Method",
+      "experience_name": "Mikroskil University",
+      "year": "January 2022 - April 2022",
+      "description": [
+        "Research and apply Design Thinking to update the interface and user experience of the Mika app.",
+        "Used Design Thinking for innovative design solutions based on user research, improving app engagement and usability."
+      ],
+      "link": "https://www.mikroskil.ac.id/ejurnal/index.php/jsm/article/view/921"
+    },
+    {
+      "name": "UI/UX Research & Design (MSIB)",
+      "experience_name": "Binar Academy",
+      "year": "August 2022 - January 2023",
+      "description": [
+        "Mastering UI/UX fundamentals and design thinking processes, including research, prototyping, and testing for product iterations and testing for product iteration.",
+        "Complete each showcase given for each chapter and present the results.",
+        "Develop product designs for mobile applications and websites, and compile UI/UX portfolios portfolio based on case studies."
+      ],
+      "link": "https://drive.google.com/file/d/1Rr9iCuW6CJ_TdaYALW07OTVsQphWudbK/view?usp=drive_link"
+    },
+    {
+      "name": "Front-End Engineer Career With Flutter (MSIB)",
+      "experience_name": "Alterra Academy",
+      "year": "February 2023 - August 2023",
+      "description": [
+        "Mastering Flutter and Dart fundamentals and flutter state management.",
+        "Complete a case study each week according to the materials and lectures on dart/flutter.",
+        "Design and build social campaign applications with Flutter. Collaborate with backend, UI/UX, and QA teams for API integration and ensuring app quality."
+      ],
+      "link": "https://drive.google.com/file/d/1I24bGCE1uZXCrelKNz_AZRbbLrBZBz5O/view?usp=drive_link"
+    },
+    {
+      "name": "Google Students Club (GDSC) Mikroskil as Event Organizer",
+      "experience_name": "Mikroskil University",
+      "year": "October 2023 - October 2024",
+      "description": [
+        "Assist and moderate Mikroskil University's Google Developer Student Clubs events and programmes.",
+        "Ready to act as a moderator in every event that will be organised by gdsc mikroskil."
+      ],
+      "link": "https://gdsc.community.dev/universitas-mikroskil-medan-indonesia/"
+    }
+  ]
+}

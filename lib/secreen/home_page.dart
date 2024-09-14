@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:web_portofolio/models/portofolio_models.dart';
 import 'package:web_portofolio/style/color_style.dart';
 import 'package:web_portofolio/style/text_sttyle.dart';
 import 'package:web_portofolio/wigdet/card_widget.dart';
@@ -11,6 +12,7 @@ class PortfolioPage extends StatefulWidget {
 class _PortfolioPageState extends State<PortfolioPage> {
   final ScrollController _scrollController = ScrollController();
 
+  MyPortofolioData? myPortofolioData;
   // GlobalKeys for different sections
   final GlobalKey section1Key = GlobalKey();
   final GlobalKey section2Key = GlobalKey();
@@ -23,6 +25,20 @@ class _PortfolioPageState extends State<PortfolioPage> {
       Scrollable.ensureVisible(context,
           duration: const Duration(milliseconds: 50), curve: Curves.easeInOut);
     }
+  }
+
+  void _loadPortfolioData() async {
+    String jsonString = await DefaultAssetBundle.of(context)
+        .loadString('assets/Json/portofolio_data.json');
+    setState(() {
+      myPortofolioData = myPortofolioDataFromMap(jsonString); // Parsing JSON
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPortfolioData(); // Memuat data JSON saat initState
   }
 
   @override
@@ -123,16 +139,22 @@ class _PortfolioPageState extends State<PortfolioPage> {
                           "Hello, I am",
                           style: FontFamily.h1,
                         ),
-                        Text("Thiyara Al-Mawaddah",
+                        Text(myPortofolioData?.biodata?.name ?? "Your Name",
                             style: FontFamily.h1.copyWith(
                               color: ColorStyle.primary,
                             )),
                         const SizedBox(height: 10),
-                        Text(
-                          "A mobile app developer who enjoys creating mobile applications \n"
-                          "from design conception to building fully functional apps ready\n"
-                          "user deployment. With a strong interest in UI/UX, this passion drives\nthe enthusiasm for developing high-quality apps.",
-                          style: FontFamily.reguler,
+                        SizedBox(
+                          width: 520, // Tentukan lebar maksimal teks
+                          child: Text(
+                            myPortofolioData?.biodata?.description ??
+                                "A brief description about yourself.",
+                            style: FontFamily.reguler,
+                            softWrap:
+                                true, // Memungkinkan teks untuk turun ke baris berikutnya
+                            overflow: TextOverflow
+                                .visible, // Menghindari pemotongan teks
+                          ),
                         ),
                       ],
                     ),
@@ -166,44 +188,47 @@ class _PortfolioPageState extends State<PortfolioPage> {
                         child: Text('My Services', style: FontFamily.title),
                       ),
                     ),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ServiceCardWidget(
-                            title: 'Mobile App Development',
-                            description:
-                                'Develops modern websites with API integration, focusing on responsiveness and user experience. '
-                                'Uses the latest technologies for fast, scalable, and optimized web solutions.',
+                    myPortofolioData == null
+                        ? const Center(child: CircularProgressIndicator())
+                        : Column(
+                            children: [
+                              // Top Row of Services
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ...?myPortofolioData?.services
+                                      ?.take(2)
+                                      .map((service) => Padding(
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: ServiceCardWidget(
+                                              title: service.name ?? 'No Title',
+                                              description: service.description ??
+                                                  'No Description',
+                                            ),
+                                      )),
+                                ],
+                              ),
+                              const SizedBox(height: 20),
+                              // Single Service at the Bottom
+                              ...?myPortofolioData?.services?.skip(2).map(
+                                    (service) => Padding(
+                                      padding: const EdgeInsets.all(12.0),
+                                      child: ServiceCardWidget(
+                                        title: service.name ?? 'No Title',
+                                        description: service.description ??
+                                            'No Description',
+                                      ),
+                                    ),
+                                  ),
+                            ],
                           ),
-                          ServiceCardWidget(
-                            title: 'Mobile App Development',
-                            description:
-                                'Develops modern websites with API integration, focusing on responsiveness and user experience. '
-                                'Uses the latest technologies for fast, scalable, and optimized web solutions.',
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    ServiceCardWidget(
-                      title: 'Mobile App Development',
-                      description:
-                          'Develops modern websites with API integration, focusing on responsiveness and user experience. '
-                          'Uses the latest technologies for fast, scalable, and optimized web solutions.',
-                    ),
                   ],
                 ),
               ),
             ),
             Container(
-             height: 650,
+              height: 650,
               key: section3Key,
               color: ColorStyle.black,
               child: const Center(child: Text('Contact Section')),

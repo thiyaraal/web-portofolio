@@ -19,6 +19,7 @@ class _ServiceCardWidgetState extends State<ServiceCardWidget> {
       width:
           MediaQuery.of(context).size.width * 0.9, // Mengambil 90% lebar layar
       constraints: BoxConstraints(
+        minHeight: 200, // Batas minimal tinggi container
         maxWidth:
             600, // Batas maksimal lebar container agar tidak terlalu besar
       ),
@@ -28,6 +29,7 @@ class _ServiceCardWidgetState extends State<ServiceCardWidget> {
         borderRadius: BorderRadius.circular(12), // Sudut melengkung
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
