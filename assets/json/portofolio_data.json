@@ -1,18 +1,29 @@
 {
   "biodata": {
     "name": "Thiyara Al Mawaddah",
-    "description": "I’m a mobile app developer and designer who’s passionate about creating apps that are both functional and visually appealing. With skills in both development and UI/UX design, I love crafting mobile solutions that not only work smoothly but also offer a delightful user experience.",
-    "email": "thiyara@mail.com",
-    "resemu": "https://www.instagram.com/thiyara",
-
+    "description": "I'm a mobile app developer and designer who's passionate about creating apps that are both functional and visually appealing. With skills in both development and UI/UX design, I love crafting mobile solutions that not only work smoothly but also offer a delightful user experience.",
+    "resume": "https://drive.google.com/file/d/11_3XvlPM0OGQH74Z2PB-zVnVi_dHzFJa/view?usp=drive_link",
     "contact": [
       {
-        "phone": "Email",
-        "email": "mailto",
+        "email": "mailto:thiyaraal@gmail.com",
+        "image": "assets/images/email.png"
+      },
+      {
         "instagram": "https://www.instagram.com/thiyara",
+        "image": "assets/images/instagram.png"
+      },
+      {
         "linkedIn": "https://www.linkedin.com/in/thiyara",
-        "github": " https ",
-        "behance": "https://www.behance.net/thiyara"
+        "image": "assets/images/linkdln.png"
+     
+      },
+      {
+        "github": "https://github.com/thiyara",
+        "image": "assets/images/github.png"
+      },
+      {
+        "behance": "https://www.behance.net/thiyara",
+        "image": "assets/images/behance.png"
       }
     ]
   },
@@ -31,45 +42,70 @@
     }
   ],
   "skills": [
-    "Flutter",
-    "Html & CSS",
-    "UI/UX Design",
-    "Figma",
-    "VSCode",
-    "Dart",
-    "Firebase",
-    "Git",
-    "API Integration",
-    "Postman",
-    "Suppabase"
+    {
+      "name": "Flutter",
+      "image": "assets/images/flutter.png"
+    },
+    {
+      "name": "HTML & CSS",
+      "image": "assets/images/htmlcss.png"
+    },
+    {
+      "name": "Figma",
+      "image": "assets/images/figma.png"
+    },
+    {
+      "name": "VSCode",
+      "image": "assets/images/vscode.png"
+    },
+    {
+      "name": "Firebase",
+      "image": "assets/images/firebase.png"
+    },
+    {
+      "name": "Git",
+      "image": "assets/images/git.png"
+    },
+    {
+      "name": "Postman",
+      "image": "assets/images/postman.png"
+    },
+    {
+      "name": "Suppabase",
+      "image": "assets/images/suppabase.png"
+    }
   ],
   "projects": {
     "app": [
       {
         "name": "MentorMatch App",
+        "image": "assets/images/mentormatch.png",
         "date": "December 2023 - April 2024",
         "description": "MentorMatch is a mentoring app built for both Android mobile devices and web platforms, connecting mentees with mentors to enhance their skills and knowledge. The app offers mentor search based on specific criteria, session scheduling, and feedback, creating a personalized and interactive learning experience.",
-        "link": "https://example.com",
+        "link": "https://github.com/thiyaraal/MentorMatch-App",
         "build_with": ["Flutter", "Dart", "Figma", "PostGreSQL", "Firebase"]
       },
       {
         "name": "Sociops Apps",
+        "image": "assets/images/sociops.png",
         "date": "May 2023 - August 2023",
         "description": "Sociops is a fundraising app that helps donors and communities make contributions to those in need, such as orphans, disaster victims, and anyone requiring assistance. The app is built for Android mobile devices.",
-        "link": "https://ecommerce.example.com",
+        "link": "https://github.com/thiyaraal/Sociops-App",
         "build_with": ["Flutter", "Dart", "Firebase", "Golang(Go)", "Figma"]
       },
       {
         "name": "Anugrah Lens Apps",
+        "image": "assets/images/anugrahlens.png",
         "date": "September 2024",
         "description": "Anugrah Lens is an app for managing eyewear customer data that helps admins quickly and systematically add customer information, such as installment data and more. The app is available for Android mobile devices.",
-        "link": "https://ecommerce.example.com",
+        "link": "https://github.com/thiyaraal/Anugrah-lens-app",
         "build_with": ["Flutter", "Dart", "Figma", "PostGreSQL", "Firebase"]
       }
     ],
     "design": [
       {
         "name": "Redesign RedDoorz App",
+        "image": "assets/images/reddorzs.png",
         "date": "September 2023",
         "description": "The redesign of the RedDoorz app was done using the Design Thinking method, starting with the problem observation stage. During this stage, user complaints and feedback were collected from various platforms. Then, ideas were developed, and a hi-fi prototype was designed, which was later tested by users to gather feedback",
         "link": "https://www.behance.net/gallery/180662855/Redesign-Aplikasi-Reddooorz",
@@ -77,20 +113,16 @@
       },
       {
         "name": "Redesign Maxim Apps",
+        "image": "assets/images/maxim.png",
         "date": "October 2022",
         "description": "The redesign of the Maxim app was done using the Design Thinking method, starting with the problem observation stage. During this stage, user complaints and feedback were collected from various platforms. Then, ideas were developed, and a hi-fi prototype was designed, which was later tested by users to gather feedback",
         "link": "https://www.behance.net/gallery/155363513/Redesign-Aplikasi-Maxim",
         "tools_used": ["Figma", "Maze"]
       },
-      {
-        "name": "Redesign Ferizy App",
-        "date": "Desember 2023",
-        "description": "The redesign of the Ferizy app was done using the Design Thinking method, starting with the problem observation stage. During this stage, user complaints and feedback were collected from various platforms. Then, ideas were developed, and a hi-fi prototype was designed, which was later tested by users to gather feedback",
-        "link": "https://www.behance.net/gallery/156012697/Redesign-Application-Website-Ferizy",
-        "tools_used": ["Figma", "Maze"]
-      },
+
       {
         "name": "Breathe Apps",
+        "image": "assets/images/breathe.png",
         "date": "December 2022 - January 2023",
         "description": "Designing a breathing application for anxiety sufferers begins with observing the issues through direct interviews with the patients to identify problems and generate ideas. This process continues to the development of a product design that can assist users, leading up to the testing phase.",
         "link": "https://www.behance.net/gallery/160859285/UIUX-Case-Study-Breathe-Mental-Health-Anxiety-Design",

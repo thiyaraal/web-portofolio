@@ -37,11 +37,12 @@ class FontFamily {
 
   // italic light roboto
   static TextStyle italic = TextStyle(
-    color: ColorStyle.white,
-    fontSize: 32,
-    fontWeight: FontWeight.w200,
-    fontFamily: GoogleFonts.jost().fontFamily,
-  );
+      color: ColorStyle.white,
+      fontSize: 18,
+      fontWeight: FontWeight.w200,
+      // italic
+      fontStyle: FontStyle.italic,
+      fontFamily: GoogleFonts.jost().fontFamily);
   // title
   static TextStyle title = TextStyle(
     color: ColorStyle.white,

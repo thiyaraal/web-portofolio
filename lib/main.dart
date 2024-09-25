@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:web_portofolio/secreen/example.dart';
 import 'package:web_portofolio/secreen/home_page.dart';
 
 void main() {

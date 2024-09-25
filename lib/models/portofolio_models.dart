@@ -11,7 +11,7 @@ String myPortofolioDataToMap(MyPortofolioData data) => json.encode(data.toMap())
 class MyPortofolioData {
     Biodata? biodata;
     List<Service>? services;
-    List<String>? skills;
+    List<Skill>? skills;
     Projects? projects;
     List<Experience>? experience;
 
@@ -26,7 +26,7 @@ class MyPortofolioData {
     factory MyPortofolioData.fromMap(Map<String, dynamic> json) => MyPortofolioData(
         biodata: json["biodata"] == null ? null : Biodata.fromMap(json["biodata"]),
         services: json["services"] == null ? [] : List<Service>.from(json["services"]!.map((x) => Service.fromMap(x))),
-        skills: json["skills"] == null ? [] : List<String>.from(json["skills"]!.map((x) => x)),
+        skills: json["skills"] == null ? [] : List<Skill>.from(json["skills"]!.map((x) => Skill.fromMap(x))),
         projects: json["projects"] == null ? null : Projects.fromMap(json["projects"]),
         experience: json["experience"] == null ? [] : List<Experience>.from(json["experience"]!.map((x) => Experience.fromMap(x))),
     );
@@ -34,7 +34,7 @@ class MyPortofolioData {
     Map<String, dynamic> toMap() => {
         "biodata": biodata?.toMap(),
         "services": services == null ? [] : List<dynamic>.from(services!.map((x) => x.toMap())),
-        "skills": skills == null ? [] : List<dynamic>.from(skills!.map((x) => x)),
+        "skills": skills == null ? [] : List<dynamic>.from(skills!.map((x) => x.toMap())),
         "projects": projects?.toMap(),
         "experience": experience == null ? [] : List<dynamic>.from(experience!.map((x) => x.toMap())),
     };
@@ -43,46 +43,42 @@ class MyPortofolioData {
 class Biodata {
     String? name;
     String? description;
-    String? email;
-    String? resemu;
+    String? resume;
     List<Contact>? contact;
 
     Biodata({
         this.name,
         this.description,
-        this.email,
-        this.resemu,
+        this.resume,
         this.contact,
     });
 
     factory Biodata.fromMap(Map<String, dynamic> json) => Biodata(
         name: json["name"],
         description: json["description"],
-        email: json["email"],
-        resemu: json["resemu"],
+        resume: json["resume"],
         contact: json["contact"] == null ? [] : List<Contact>.from(json["contact"]!.map((x) => Contact.fromMap(x))),
     );
 
     Map<String, dynamic> toMap() => {
         "name": name,
         "description": description,
-        "email": email,
-        "resemu": resemu,
+        "resume": resume,
         "contact": contact == null ? [] : List<dynamic>.from(contact!.map((x) => x.toMap())),
     };
 }
 
 class Contact {
-    String? phone;
     String? email;
+    String? image;
     String? instagram;
     String? linkedIn;
     String? github;
     String? behance;
 
     Contact({
-        this.phone,
         this.email,
+        this.image,
         this.instagram,
         this.linkedIn,
         this.github,
@@ -90,8 +86,8 @@ class Contact {
     });
 
     factory Contact.fromMap(Map<String, dynamic> json) => Contact(
-        phone: json["phone"],
         email: json["email"],
+        image: json["image"],
         instagram: json["instagram"],
         linkedIn: json["linkedIn"],
         github: json["github"],
@@ -99,8 +95,8 @@ class Contact {
     );
 
     Map<String, dynamic> toMap() => {
-        "phone": phone,
         "email": email,
+        "image": image,
         "instagram": instagram,
         "linkedIn": linkedIn,
         "github": github,
@@ -162,6 +158,7 @@ class Projects {
 
 class App {
     String? name;
+    String? image;
     String? date;
     String? description;
     String? link;
@@ -169,6 +166,7 @@ class App {
 
     App({
         this.name,
+        this.image,
         this.date,
         this.description,
         this.link,
@@ -177,6 +175,7 @@ class App {
 
     factory App.fromMap(Map<String, dynamic> json) => App(
         name: json["name"],
+        image: json["image"],
         date: json["date"],
         description: json["description"],
         link: json["link"],
@@ -185,6 +184,7 @@ class App {
 
     Map<String, dynamic> toMap() => {
         "name": name,
+        "image": image,
         "date": date,
         "description": description,
         "link": link,
@@ -194,6 +194,7 @@ class App {
 
 class Design {
     String? name;
+    String? image;
     String? date;
     String? description;
     String? link;
@@ -201,6 +202,7 @@ class Design {
 
     Design({
         this.name,
+        this.image,
         this.date,
         this.description,
         this.link,
@@ -209,6 +211,7 @@ class Design {
 
     factory Design.fromMap(Map<String, dynamic> json) => Design(
         name: json["name"],
+        image: json["image"],
         date: json["date"],
         description: json["description"],
         link: json["link"],
@@ -217,6 +220,7 @@ class Design {
 
     Map<String, dynamic> toMap() => {
         "name": name,
+        "image": image,
         "date": date,
         "description": description,
         "link": link,
@@ -241,5 +245,25 @@ class Service {
     Map<String, dynamic> toMap() => {
         "name": name,
         "description": description,
+    };
+}
+
+class Skill {
+    String? name;
+    String? image;
+
+    Skill({
+        this.name,
+        this.image,
+    });
+
+    factory Skill.fromMap(Map<String, dynamic> json) => Skill(
+        name: json["name"],
+        image: json["image"],
+    );
+
+    Map<String, dynamic> toMap() => {
+        "name": name,
+        "image": image,
     };
 }
