@@ -34,7 +34,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
 
   void _loadPortfolioData() async {
     String jsonString = await DefaultAssetBundle.of(context)
-        .loadString('assets/Json/portofolio_data.json');
+        .loadString('assets/json/portofolio_data.json');
     setState(() {
       myPortofolioData = myPortofolioDataFromMap(jsonString); // Parsing JSON
     });
