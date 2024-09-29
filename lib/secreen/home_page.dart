@@ -692,7 +692,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
                                   Row(
                                     children: [
                                       ContactWidget(
-                                        title: 'thiyraal',
+                                        title: 'thiyaraal',
                                         image: myPortofolioData
                                                 ?.biodata?.contact
                                                 ?.firstWhere((element) =>
