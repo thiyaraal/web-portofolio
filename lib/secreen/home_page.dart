@@ -700,12 +700,15 @@ class _PortfolioPageState extends State<PortfolioPage> {
                                                 .image ??
                                             'assets/images/github.png',
                                         onTap: () async {
-                                          await _launchURL(myPortofolioData
+                                          String? githubUrl = myPortofolioData
                                                   ?.biodata?.contact
                                                   ?.firstWhere((element) =>
                                                       element.github != null)
-                                                  .email ??
-                                              '');
+                                                  .github ??
+                                              '';
+                                          print(
+                                              'Mencoba membuka URL: $githubUrl'); // Debugging
+                                          await _launchURL(githubUrl);
                                         },
                                       ),
                                       const SizedBox(width: 40),
