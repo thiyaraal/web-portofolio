@@ -62,167 +62,460 @@ class _PortfolioPageState extends State<PortfolioPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorStyle.background,
       body: SingleChildScrollView(
         controller: _scrollController,
         child: Column(
           children: [
-            Container(
-              key: section1Key,
-              height: 650,
-              color: Colors.black,
-              child: Stack(
-                children: [
-                  Positioned(
-                    right: 50,
-                    top: -10,
-                    child: CustomPaint(
-                      //size nya setengah layar
-                      size: const Size(500, 1400),
-                      painter: HalfCirclePainter(),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 24.0, top: 24),
-                    child: Row(
-                      children: [
-                        TextButton(
-                          onPressed: () => scrollToSection(section1Key),
-                          child: Text('Home', style: FontFamily.textButton),
-                        ),
-                        const SizedBox(width: 12),
-                        TextButton(
-                          onPressed: () => scrollToSection(section2Key),
-                          child: Text(
-                            'Services',
-                            style: FontFamily.textButton.copyWith(
-                              color: ColorStyle.disable,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        TextButton(
-                          onPressed: () => scrollToSection(section3Key),
-                          child: Text(
-                            'Projects',
-                            style: FontFamily.textButton.copyWith(
-                              color: ColorStyle.disable,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        TextButton(
-                          onPressed: () => scrollToSection(section4Key),
-                          child: Text(
-                            'My Experience',
-                            style: FontFamily.textButton.copyWith(
-                              color: ColorStyle.disable,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        TextButton(
-                          onPressed: () => scrollToSection(section5Key),
-                          child: Text(
-                            'Contact',
-                            style: FontFamily.textButton.copyWith(
-                              color: ColorStyle.disable,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 600),
-                        SizedBox(
-                          height: 42,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: ColorStyle.primary,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                bool isSmallScreen = constraints.maxWidth < 800;
+
+                return isSmallScreen
+                    ? Container(
+                        width: double.infinity,
+                        key: section1Key,
+                        height: 480,
+                        color: Colors.black,
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              right: 50,
+                              top: -10,
+                              child: CustomPaint(
+                                //size nya setengah layar
+                                size: const Size(500, 1400),
+                                painter: HalfCirclePainter(),
                               ),
                             ),
-                            onPressed: () {
-                              _launchURL(
-                                  myPortofolioData?.biodata?.resume ?? '');
-                            },
-                            child: Text('Donwload CV',
-                                style: FontFamily.textButton),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    left: 40,
-                    top: 200,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        /// dividerdengan panjang 100
-                        const SizedBox(
-                          width: 100, // Panjang divider
-                          child: Divider(
-                            color: Color.fromARGB(
-                                255, 255, 255, 255), // Warna divider
-                            thickness: 2, // Ketebalan divider
-                          ),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 20.0, top: 24),
+                                child: Row(
+                                  children: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          scrollToSection(section1Key),
+                                      child: Text('Home',
+                                          style: FontFamily.textButton.copyWith(
+                                            fontSize: 16,
+                                          )),
+                                    ),
+                                    const SizedBox(width: 6),
+                                    TextButton(
+                                      onPressed: () =>
+                                          scrollToSection(section2Key),
+                                      child: Text(
+                                        'Services',
+                                        style: FontFamily.textButton.copyWith(
+                                          color: ColorStyle.disable,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 6),
+                                    TextButton(
+                                      onPressed: () =>
+                                          scrollToSection(section3Key),
+                                      child: Text(
+                                        'Projects',
+                                        style: FontFamily.textButton.copyWith(
+                                          color: ColorStyle.disable,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 6),
+                                    TextButton(
+                                      onPressed: () =>
+                                          scrollToSection(section4Key),
+                                      child: Text(
+                                        'Experience',
+                                        style: FontFamily.textButton.copyWith(
+                                          color: ColorStyle.disable,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 6),
+                                    TextButton(
+                                      onPressed: () =>
+                                          scrollToSection(section5Key),
+                                      child: Text(
+                                        'Contact',
+                                        style: FontFamily.textButton.copyWith(
+                                          color: ColorStyle.disable,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              left: 20,
+                              top: 150,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  /// dividerdengan panjang 100
+                                  const SizedBox(
+                                    width: 100, // Panjang divider
+                                    child: Divider(
+                                      color: Color.fromARGB(
+                                          255, 255, 255, 255), // Warna divider
+                                      thickness: 2, // Ketebalan divider
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                      height:
+                                          10), // Jarak antara divider dan teks
+                                  Text(
+                                    "Hello, I am",
+                                    style: FontFamily.h1.copyWith(
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                  Text(
+                                      myPortofolioData?.biodata?.name ??
+                                          "Your Name",
+                                      style: FontFamily.h1.copyWith(
+                                          color: ColorStyle.primary,
+                                          fontSize: 18)),
+                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                    width: 180, // Tentukan lebar maksimal teks
+                                    child: Text(
+                                      myPortofolioData?.biodata?.description ??
+                                          "A brief description about yourself.",
+                                      style: FontFamily.reguler
+                                          .copyWith(fontSize: 12),
+                                      softWrap:
+                                          true, // Memungkinkan teks untuk turun ke baris berikutnya
+                                      overflow: TextOverflow
+                                          .visible, // Menghindari pemotongan teks
+                                    ),
+                                  ),
+                                  const SizedBox(height: 12),
+                                  SizedBox(
+                                    height: 32,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: ColorStyle.primary,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        _launchURL(
+                                            myPortofolioData?.biodata?.resume ??
+                                                '');
+                                      },
+                                      child: Text('Download CV',
+                                          style: FontFamily.textButton.copyWith(
+                                            fontSize: 14,
+                                          )),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Positioned(
+                              left: 100,
+                              bottom: -4,
+                              child: Image.asset(
+                                'assets/images/Thiyara-bg.png',
+                                height: 350,
+                              ),
+                            )
+                          ],
                         ),
-                        const SizedBox(
-                            height: 10), // Jarak antara divider dan teks
-                        Text(
-                          "Hello, I am",
-                          style: FontFamily.h1,
+                      )
+                    : Container(
+                        width: double.infinity,
+                        key: section1Key,
+                        height: 600,
+                        color: Colors.black,
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              right: 50,
+                              top: -10,
+                              child: CustomPaint(
+                                //size nya setengah layar
+                                size: const Size(500, 1400),
+                                painter: HalfCirclePainter(),
+                              ),
+                            ),
+                            SingleChildScrollView(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 24.0, top: 24),
+                                child: Row(
+                                  children: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          scrollToSection(section1Key),
+                                      child: Text('Home',
+                                          style: FontFamily.textButton),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    TextButton(
+                                      onPressed: () =>
+                                          scrollToSection(section2Key),
+                                      child: Text(
+                                        'Services',
+                                        style: FontFamily.textButton.copyWith(
+                                          color: ColorStyle.disable,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    TextButton(
+                                      onPressed: () =>
+                                          scrollToSection(section3Key),
+                                      child: Text(
+                                        'Projects',
+                                        style: FontFamily.textButton.copyWith(
+                                          color: ColorStyle.disable,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    TextButton(
+                                      onPressed: () =>
+                                          scrollToSection(section4Key),
+                                      child: Text(
+                                        'My Experience',
+                                        style: FontFamily.textButton.copyWith(
+                                          color: ColorStyle.disable,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    TextButton(
+                                      onPressed: () =>
+                                          scrollToSection(section5Key),
+                                      child: Text(
+                                        'Contact',
+                                        style: FontFamily.textButton.copyWith(
+                                          color: ColorStyle.disable,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              left: 40,
+                              top: 200,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  /// dividerdengan panjang 100
+                                  const SizedBox(
+                                    width: 100, // Panjang divider
+                                    child: Divider(
+                                      color: Color.fromARGB(
+                                          255, 255, 255, 255), // Warna divider
+                                      thickness: 2, // Ketebalan divider
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                      height:
+                                          10), // Jarak antara divider dan teks
+                                  Text(
+                                    "Hello, I am",
+                                    style: FontFamily.h1,
+                                  ),
+                                  Text(
+                                      myPortofolioData?.biodata?.name ??
+                                          "Your Name",
+                                      style: FontFamily.h1.copyWith(
+                                        color: ColorStyle.primary,
+                                      )),
+                                  const SizedBox(height: 10),
+                                  SizedBox(
+                                    width: 520, // Tentukan lebar maksimal teks
+                                    child: Text(
+                                      myPortofolioData?.biodata?.description ??
+                                          "A brief description about yourself.",
+                                      style: FontFamily.reguler,
+                                      softWrap:
+                                          true, // Memungkinkan teks untuk turun ke baris berikutnya
+                                      overflow: TextOverflow
+                                          .visible, // Menghindari pemotongan teks
+                                    ),
+                                  ),
+                                  const SizedBox(height: 12),
+                                  SizedBox(
+                                    height: 42,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: ColorStyle.primary,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        _launchURL(
+                                            myPortofolioData?.biodata?.resume ??
+                                                '');
+                                      },
+                                      child: Text('Download CV',
+                                          style: FontFamily.textButton),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Positioned(
+                              right: 150,
+                              bottom: -4,
+                              child: Image.asset(
+                                'assets/images/Thiyara-bg.png',
+                                height: 500,
+                              ),
+                            )
+                          ],
                         ),
-                        Text(myPortofolioData?.biodata?.name ?? "Your Name",
-                            style: FontFamily.h1.copyWith(
-                              color: ColorStyle.primary,
-                            )),
-                        const SizedBox(height: 10),
-                        SizedBox(
-                          width: 520, // Tentukan lebar maksimal teks
-                          child: Text(
-                            myPortofolioData?.biodata?.description ??
-                                "A brief description about yourself.",
-                            style: FontFamily.reguler,
-                            softWrap:
-                                true, // Memungkinkan teks untuk turun ke baris berikutnya
-                            overflow: TextOverflow
-                                .visible, // Menghindari pemotongan teks
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    right: 150,
-                    bottom: -4,
-                    child: Image.asset(
-                      'assets/images/Thiyara-bg.png',
-                      height: 500,
-                    ),
-                  )
-                ],
-              ),
+                      );
+              },
             ),
-            Container(
-              height: 750,
-              key: section2Key,
-              color: ColorStyle.background,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment
-                      .start, // or spaceBetween/spaceAround as needed
+            LayoutBuilder(
+              builder: (context, constraints) {
+                bool isSmallScreen = constraints.maxWidth < 1200;
 
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 12.0),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text('My Services', style: FontFamily.title),
-                      ),
-                    ),
-                    myPortofolioData == null
-                        ? const Center(child: CircularProgressIndicator())
-                        : Column(
+                return isSmallScreen
+                    ? Container(
+                        width: double.infinity,
+                        key: section2Key,
+                        color: ColorStyle.black,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment
+                              .start, // or spaceBetween/spaceAround as needed
+
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 12.0, left: 20.0, right: 20.0),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Row(
+                                  children: [
+                                    Text('My Experiences',
+                                        style: FontFamily.title
+                                            .copyWith(fontSize: 18)),
+                                    const SizedBox(width: 10),
+                                    const Expanded(
+                                      child: Divider(
+                                        color: Colors.tealAccent,
+                                        thickness: 1,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            myPortofolioData == null
+                                ? const Center(
+                                    child: CircularProgressIndicator())
+                                : Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      ...?myPortofolioData?.services!.map(
+                                        (service) => Padding(
+                                          padding: const EdgeInsets.all(12.0),
+                                          child: ServiceCardWidget(
+                                            maxWidth: 300,
+                                            minHeight: 100,
+                                            fontSize: 14,
+                                            title: service.name ?? 'No Title',
+                                            description: service.description ??
+                                                'No Description',
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 12.0, bottom: 12.0, left: 14.0),
+                              child: Wrap(
+                                spacing: 12.0, // Jarak horizontal antar item
+                                runSpacing: 12.0, // Jarak vertikal antar baris
+                                alignment:
+                                    WrapAlignment.center, // Item rata tengah
+                                children: myPortofolioData?.skills
+                                        ?.map((skill) {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize
+                                            .min, // Sesuaikan ukuran kolom
+                                        children: [
+                                          SizedBox(
+                                            height: 40,
+                                            width: 40,
+                                            child: Image.asset(
+                                              skill.image ??
+                                                  'assets/images/default.png', // Default path jika null
+                                              height: 250,
+                                            ),
+                                          ),
+                                          Text(
+                                            skill.name ??
+                                                'Unnamed Skill', // Default text jika null
+                                            style: FontFamily.reguler.copyWith(
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    }).toList() ??
+                                    [],
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    : Container(
+                        width: double.infinity,
+                        key: section2Key,
+                        color: ColorStyle.background,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment
+                              .start, // or spaceBetween/spaceAround as needed
+
+                          children: [
+                            Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Row(
+                                      children: [
+                                        Text('My Projects',
+                                            style: FontFamily.title),
+                                        const SizedBox(width: 10),
+                                        const Expanded(
+                                          child: Divider(
+                                            color: Colors.tealAccent,
+                                            thickness: 1,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                            myPortofolioData == null
+                                ? const Center(
+                                    child: CircularProgressIndicator())
+                                :  Column(
                             children: [
                               // Top Row of Services
                               Row(
@@ -256,520 +549,1191 @@ class _PortfolioPageState extends State<PortfolioPage> {
                                   ),
                             ],
                           ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: myPortofolioData?.skills?.map((skill) {
-                              return Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 12.0, right: 12.0),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 60,
-                                      width: 60,
-                                      child: Image.asset(
-                                        skill.image ??
-                                            'assets/images/default.png', // Default path jika null
-                                        height: 500,
-                                      ),
-                                    ),
-                                    Text(
-                                      skill.name ??
-                                          'Unnamed Skill', // Default text jika null
-                                      style: FontFamily.reguler,
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }).toList() ??
-                            [], // Pastikan list tidak null
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              height: 2150, // Tinggi Section 3
-              key: section3Key,
-              color: ColorStyle.black,
-              child: Center(
-                child: Stack(
-                  alignment:
-                      Alignment.center, // Pastikan Stack tersusun di tengah
-                  children: [
-                    // Circle Background
-                    CustomPaint(
-                      size: const Size(
-                          380, 380), // Ukuran lingkaran bisa disesuaikan
-                      painter: FullCirclePainter(),
-                    ),
-
-                    // Column with content
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          myPortofolioData == null
-                              ? const Center(child: CircularProgressIndicator())
-                              : Column(
-                                  children: [
-                                    // Align with buttons
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 20.0, right: 12),
-                                      child: Align(
-                                        alignment: Alignment
-                                            .topRight, // Align to top-right
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize
-                                              .min, // Row hanya mengambil ruang yang diperlukan
-                                          mainAxisAlignment: MainAxisAlignment
-                                              .end, // Dorong tombol ke kanan
-                                          children: [
-                                            SizedBox(
-                                              height: 42,
-                                              child: ElevatedButton(
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor: isActiveApp
-                                                      ? ColorStyle
-                                                          .primary // Jika aktif, warna tombol utama
-                                                      : ColorStyle
-                                                          .secondary, // Jika tidak aktif, warna sekunder
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                  ),
-                                                ),
-                                                onPressed: () {
-                                                  setState(() {
-                                                    isActiveApp =
-                                                        true; // Set tombol "Apps" aktif
-                                                  });
-                                                },
-                                                child: Text(
-                                                  'Apps',
-                                                  style: isActiveApp
-                                                      ? FontFamily.textButton
-                                                      : FontFamily
-                                                          .textButton, // Gaya teks saat tidak aktif
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 12.0, bottom: 12.0, left: 14.0),
+                              child: SingleChildScrollView(
+                                scrollDirection:
+                                    Axis.horizontal, // Scroll secara horizontal
+                                child: Row(
+                                  children: myPortofolioData?.skills
+                                          ?.map((skill) {
+                                        return Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 20.0), // Jarak antar item
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize
+                                                .min, // Sesuaikan ukuran kolom
+                                            children: [
+                                              SizedBox(
+                                                height: 80,
+                                                width: 80,
+                                                child: Image.asset(
+                                                  skill.image ??
+                                                      'assets/images/default.png', // Default path jika null
+                                                  fit: BoxFit
+                                                      .cover, // Menyesuaikan gambar agar sesuai kotak
                                                 ),
                                               ),
-                                            ),
-                                            const SizedBox(width: 12),
-                                            SizedBox(
-                                              height: 42,
-                                              child: ElevatedButton(
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor: !isActiveApp
-                                                      ? ColorStyle
-                                                          .primary // Jika aktif, warna tombol utama
-                                                      : ColorStyle
-                                                          .secondary, // Jika tidak aktif, warna sekunder
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
+                                              const SizedBox(
+                                                  height:
+                                                      8), // Spasi antara gambar dan teks
+                                              Text(
+                                                skill.name ??
+                                                    'Unnamed Skill', // Default text jika null
+                                                textAlign: TextAlign
+                                                    .center, // Pastikan teks rata tengah
+                                                style: FontFamily.reguler
+                                                    .copyWith(
+                                                        fontSize:
+                                                            16), // Ukuran font
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      }).toList() ??
+                                      [],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+              },
+            ),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                bool isSmallScreen = constraints.maxWidth < 1200;
+
+                return isSmallScreen
+                    ? Container(
+                        key: section3Key,
+                        color: ColorStyle.black,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                myPortofolioData == null
+                                    ? const Center(
+                                        child: CircularProgressIndicator())
+                                    : Column(
+                                        children: [
+                                          Align(
+                                            alignment: Alignment.center,
+                                            child: Row(
+                                              children: [
+                                                Text('My Project',
+                                                    style: FontFamily.title
+                                                        .copyWith(
+                                                            fontSize: 18)),
+                                                const SizedBox(width: 10),
+                                                const Expanded(
+                                                  child: Divider(
+                                                    color: Colors.tealAccent,
+                                                    thickness: 1,
                                                   ),
                                                 ),
-                                                onPressed: () {
-                                                  setState(() {
-                                                    isActiveApp =
-                                                        false; // Set tombol "Design" aktif
-                                                  });
-                                                },
-                                                child: Text(
-                                                  'Design',
-                                                  style: !isActiveApp
-                                                      ? FontFamily
-                                                          .textButton // Gaya teks saat aktif
-                                                      : FontFamily
-                                                          .textButton, // Gaya teks saat tidak aktif
+                                              ],
+                                            ),
+                                          ),
+                                          // Align with buttons
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 20.0, right: 12),
+                                            child: Align(
+                                              alignment: Alignment
+                                                  .topRight, // Align to top-right
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize
+                                                    .min, // Row hanya mengambil ruang yang diperlukan
+                                                mainAxisAlignment: MainAxisAlignment
+                                                    .end, // Dorong tombol ke kanan
+                                                children: [
+                                                  SizedBox(
+                                                    height: 28,
+                                                    child: ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        backgroundColor:
+                                                            isActiveApp
+                                                                ? ColorStyle
+                                                                    .primary // Jika aktif, warna tombol utama
+                                                                : ColorStyle
+                                                                    .secondary, // Jika tidak aktif, warna sekunder
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(8),
+                                                        ),
+                                                      ),
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          isActiveApp =
+                                                              true; // Set tombol "Apps" aktif
+                                                        });
+                                                      },
+                                                      child: Text('Apps',
+                                                          style: isActiveApp
+                                                              ? FontFamily
+                                                                  .textButton
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          16)
+                                                              : FontFamily
+                                                                  .textButton
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          16) // Gaya teks saat tidak aktif
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(width: 12),
+                                                  SizedBox(
+                                                    height: 28,
+                                                    child: ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        backgroundColor:
+                                                            !isActiveApp
+                                                                ? ColorStyle
+                                                                    .primary // Jika aktif, warna tombol utama
+                                                                : ColorStyle
+                                                                    .secondary, // Jika tidak aktif, warna sekunder
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(8),
+                                                        ),
+                                                      ),
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          isActiveApp =
+                                                              false; // Set tombol "Design" aktif
+                                                        });
+                                                      },
+                                                      child: Text('Design',
+                                                          style: !isActiveApp
+                                                              ? FontFamily
+                                                                  .textButton
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          16) //
+                                                              : FontFamily
+                                                                  .textButton
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          16) //
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+
+                                          // Menampilkan data aplikasi atau desain berdasarkan isActiveApp
+                                          ...?isActiveApp
+                                              ? myPortofolioData?.projects?.app
+                                                  ?.map(
+                                                  (app) => Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            12.0),
+                                                    child: AppCardWidgetMobile(
+                                                      onPress: () async {
+                                                        await _launchURL(app
+                                                            .link
+                                                            .toString()); // Panggil fungsi _launchURL dengan parameter URL
+                                                      },
+                                                      buildMethod: (app
+                                                                      .buildWith !=
+                                                                  null &&
+                                                              app.buildWith!
+                                                                  .isNotEmpty)
+                                                          ? app.buildWith!
+                                                              .join(', ')
+                                                          : 'No Build Method',
+                                                      image:
+                                                          app.image.toString(),
+                                                      name:
+                                                          app.name ?? 'no name',
+                                                      date:
+                                                          app.date ?? 'No Date',
+                                                      description:
+                                                          app.description ??
+                                                              'No Description',
+                                                      onTap: () {},
+                                                    ),
+                                                  ),
+                                                )
+                                              : myPortofolioData
+                                                  ?.projects?.design
+                                                  ?.map(
+                                                  (design) => Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              12.0),
+                                                      child:
+                                                          AppCardWidgetMobile(
+                                                        onPress: () async {
+                                                          await _launchURL(design
+                                                              .link
+                                                              .toString()); // Panggil fungsi _launchURL dengan parameter URL
+                                                        },
+                                                        buildMethod: (design
+                                                                        .toolsUsed !=
+                                                                    null &&
+                                                                design
+                                                                    .toolsUsed!
+                                                                    .isNotEmpty)
+                                                            ? design.toolsUsed!
+                                                                .join(', ')
+                                                            : 'No Build Method',
+                                                        image: design.image
+                                                            .toString(),
+                                                        name: design.name ??
+                                                            'no name',
+                                                        date: design.date ??
+                                                            'No Date',
+                                                        description: design
+                                                                .description ??
+                                                            'No Description',
+                                                        onTap: () {},
+                                                      )),
                                                 ),
+                                        ],
+                                      ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )
+                    : Container(
+                        // height: 2150, // Tinggi Section 3
+                        key: section3Key,
+                        color: ColorStyle.black,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Row(
+                                      children: [
+                                        Text('My Projects',
+                                            style: FontFamily.title),
+                                        const SizedBox(width: 10),
+                                        const Expanded(
+                                          child: Divider(
+                                            color: Colors.tealAccent,
+                                            thickness: 1,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                myPortofolioData == null
+                                    ? const Center(
+                                        child: CircularProgressIndicator())
+                                    : Column(
+                                        children: [
+                                          // Align with buttons
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 20.0, right: 12),
+                                            child: Align(
+                                              alignment: Alignment
+                                                  .topRight, // Align to top-right
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize
+                                                    .min, // Row hanya mengambil ruang yang diperlukan
+                                                mainAxisAlignment: MainAxisAlignment
+                                                    .end, // Dorong tombol ke kanan
+                                                children: [
+                                                  SizedBox(
+                                                    height: 42,
+                                                    child: ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        backgroundColor:
+                                                            isActiveApp
+                                                                ? ColorStyle
+                                                                    .primary // Jika aktif, warna tombol utama
+                                                                : ColorStyle
+                                                                    .secondary, // Jika tidak aktif, warna sekunder
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(8),
+                                                        ),
+                                                      ),
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          isActiveApp =
+                                                              true; // Set tombol "Apps" aktif
+                                                        });
+                                                      },
+                                                      child: Text(
+                                                        'Apps',
+                                                        style: isActiveApp
+                                                            ? FontFamily
+                                                                .textButton
+                                                            : FontFamily
+                                                                .textButton, // Gaya teks saat tidak aktif
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  const SizedBox(width: 12),
+                                                  SizedBox(
+                                                    height: 42,
+                                                    child: ElevatedButton(
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        backgroundColor:
+                                                            !isActiveApp
+                                                                ? ColorStyle
+                                                                    .primary // Jika aktif, warna tombol utama
+                                                                : ColorStyle
+                                                                    .secondary, // Jika tidak aktif, warna sekunder
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(8),
+                                                        ),
+                                                      ),
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          isActiveApp =
+                                                              false; // Set tombol "Design" aktif
+                                                        });
+                                                      },
+                                                      child: Text(
+                                                        'Design',
+                                                        style: !isActiveApp
+                                                            ? FontFamily
+                                                                .textButton // Gaya teks saat aktif
+                                                            : FontFamily
+                                                                .textButton, // Gaya teks saat tidak aktif
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+
+                                          // Menampilkan data aplikasi atau desain berdasarkan isActiveApp
+                                          ...?isActiveApp
+                                              ? myPortofolioData?.projects?.app
+                                                  ?.map(
+                                                  (app) => Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            12.0),
+                                                    child: AppCardWidget(
+                                                      onPress: () async {
+                                                        await _launchURL(app
+                                                            .link
+                                                            .toString()); // Panggil fungsi _launchURL dengan parameter URL
+                                                      },
+                                                      buildMethod: (app
+                                                                      .buildWith !=
+                                                                  null &&
+                                                              app.buildWith!
+                                                                  .isNotEmpty)
+                                                          ? app.buildWith!
+                                                              .join(', ')
+                                                          : 'No Build Method',
+                                                      image:
+                                                          app.image.toString(),
+                                                      name:
+                                                          app.name ?? 'no name',
+                                                      date:
+                                                          app.date ?? 'No Date',
+                                                      description:
+                                                          app.description ??
+                                                              'No Description',
+                                                      onTap: () {},
+                                                    ),
+                                                  ),
+                                                )
+                                              : myPortofolioData
+                                                  ?.projects?.design
+                                                  ?.map(
+                                                  (design) => Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              12.0),
+                                                      child: AppCardWidget(
+                                                        onPress: () async {
+                                                          await _launchURL(design
+                                                              .link
+                                                              .toString()); // Panggil fungsi _launchURL dengan parameter URL
+                                                        },
+                                                        buildMethod: (design
+                                                                        .toolsUsed !=
+                                                                    null &&
+                                                                design
+                                                                    .toolsUsed!
+                                                                    .isNotEmpty)
+                                                            ? design.toolsUsed!
+                                                                .join(', ')
+                                                            : 'No Build Method',
+                                                        image: design.image
+                                                            .toString(),
+                                                        name: design.name ??
+                                                            'no name',
+                                                        date: design.date ??
+                                                            'No Date',
+                                                        description: design
+                                                                .description ??
+                                                            'No Description',
+                                                        onTap: () {},
+                                                      )),
+                                                ),
+                                        ],
+                                      ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+              },
+            ),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                bool isSmallScreen = constraints.maxWidth < 1200;
+
+                return isSmallScreen
+                    ? Container(
+                        key: section4Key,
+                        color: ColorStyle.black,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    bottom: 12.0, left: 12.0, right: 12.0),
+                                child: Column(
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        children: [
+                                          Text('My Experiences',
+                                              style: FontFamily.title
+                                                  .copyWith(fontSize: 18)),
+                                          const SizedBox(width: 10),
+                                          const Expanded(
+                                            child: Divider(
+                                              color: Colors.tealAccent,
+                                              thickness: 1,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    // Tambahkan pengecekan null
+                                    if (myPortofolioData?.experience != null &&
+                                        myPortofolioData!
+                                            .experience!.isNotEmpty)
+                                      for (var exp
+                                          in myPortofolioData!.experience!)
+                                        Padding(
+                                          padding: const EdgeInsets.all(20.0),
+                                          child: Container(
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color: ColorStyle.background,
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(20.0),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  if (exp.name !=
+                                                      null) // Cek null pada exp.name
+                                                    Text(exp.name!,
+                                                        style: FontFamily.sub
+                                                            .copyWith(
+                                                                fontSize: 16)),
+                                                  if (exp.experienceName !=
+                                                          null &&
+                                                      exp.year != null)
+                                                    Text(
+                                                      '${exp.experienceName!} (${exp.year!})', // Gabungkan nama dan rentang tahun
+                                                      style: FontFamily.italic
+                                                          .copyWith(
+                                                              fontSize: 12),
+                                                    ),
+                                                  if (exp.description != null)
+                                                    for (var desc
+                                                        in exp.description!)
+                                                      Row(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                              '• ', // Simbol bullet atau bisa diganti '*'
+                                                              style: FontFamily
+                                                                  .reguler
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          12)),
+                                                          Expanded(
+                                                            child: Text(
+                                                              desc,
+                                                              style: FontFamily
+                                                                  .reguler
+                                                                  .copyWith(
+                                                                      fontSize:
+                                                                          10),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  if (exp.link != null)
+                                                    const SizedBox(height: 12),
+                                                  SizedBox(
+                                                    height: 32,
+                                                    width: 120,
+                                                    child: ElevatedButton(
+                                                      onPressed: () async {
+                                                        // ignore: deprecated_member_use
+                                                        if (await canLaunch(
+                                                            exp.link!)) {
+                                                          await launch(
+                                                              exp.link!);
+                                                        }
+                                                      },
+                                                      style: ButtonStyle(
+                                                        shape: WidgetStateProperty
+                                                            .all<
+                                                                RoundedRectangleBorder>(
+                                                          RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                        ),
+                                                        backgroundColor:
+                                                            WidgetStateProperty
+                                                                .all<Color>(
+                                                          ColorStyle.primary,
+                                                        ),
+                                                      ),
+                                                      child: Text('See Project',
+                                                          style: FontFamily
+                                                              .textButton
+                                                              .copyWith(
+                                                                  fontSize:
+                                                                      14)),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    : Container(
+                        height: 1300,
+                        key: section4Key,
+                        color: ColorStyle.black,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    bottom: 12.0, left: 12.0, right: 12.0),
+                                child: Column(
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: Row(
+                                        children: [
+                                          Text('My Experiences',
+                                              style: FontFamily.title),
+                                          const SizedBox(width: 10),
+                                          const Expanded(
+                                            child: Divider(
+                                              color: Colors.tealAccent,
+                                              thickness: 1,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    // Tambahkan pengecekan null
+                                    if (myPortofolioData?.experience != null &&
+                                        myPortofolioData!
+                                            .experience!.isNotEmpty)
+                                      for (var exp
+                                          in myPortofolioData!.experience!)
+                                        Padding(
+                                          padding: const EdgeInsets.all(20.0),
+                                          child: Container(
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color: ColorStyle.background,
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(20.0),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  if (exp.name !=
+                                                      null) // Cek null pada exp.name
+                                                    Text(exp.name!,
+                                                        style: FontFamily.sub),
+                                                  if (exp.experienceName !=
+                                                          null &&
+                                                      exp.year != null)
+                                                    Text(
+                                                      '${exp.experienceName!} (${exp.year!})', // Gabungkan nama dan rentang tahun
+                                                      style: FontFamily.italic,
+                                                    ),
+                                                  if (exp.description != null)
+                                                    for (var desc
+                                                        in exp.description!)
+                                                      Row(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                              '• ', // Simbol bullet atau bisa diganti '*'
+                                                              style: FontFamily
+                                                                  .reguler),
+                                                          Expanded(
+                                                            child: Text(
+                                                              desc,
+                                                              style: FontFamily
+                                                                  .reguler,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  if (exp.link != null)
+                                                    const SizedBox(height: 12),
+                                                  Align(
+                                                    alignment:
+                                                        Alignment.bottomRight,
+                                                    child: SizedBox(
+                                                      height: 48,
+                                                      width: 200,
+                                                      child: ElevatedButton(
+                                                        onPressed: () async {
+                                                          // ignore: deprecated_member_use
+                                                          if (await canLaunch(
+                                                              exp.link!)) {
+                                                            await launch(
+                                                                exp.link!);
+                                                          }
+                                                        },
+                                                        style: ButtonStyle(
+                                                          shape: WidgetStateProperty
+                                                              .all<
+                                                                  RoundedRectangleBorder>(
+                                                            RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                          ),
+                                                          backgroundColor:
+                                                              WidgetStateProperty
+                                                                  .all<Color>(
+                                                            ColorStyle.primary,
+                                                          ),
+                                                        ),
+                                                        child: Text(
+                                                            'See Project',
+                                                            style: FontFamily
+                                                                .textButton),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+              },
+            ),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                bool isSmallScreen = constraints.maxWidth < 1200;
+
+                return isSmallScreen
+                    ? Container(
+                        height: 500,
+                        key: section5Key,
+                        color: ColorStyle.black,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            top: 20.0,
+                            left: 20,
+                          ), // Menambahkan padding kanan
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 12.0, left: 20.0),
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      RichText(
+                                        text: TextSpan(
+                                          style: FontFamily
+                                              .title, // Style untuk teks default
+                                          children: <TextSpan>[
+                                            TextSpan(
+                                              text: "Thank You for Your ",
+                                              style: FontFamily.title.copyWith(
+                                                fontSize: 24,
+                                              ),
+                                            ),
+                                            TextSpan(
+                                              text:
+                                                  "Attention!", // Teks yang ingin diubah warna
+                                              style: FontFamily.title.copyWith(
+                                                fontSize: 24,
+                                                color: ColorStyle.primary,
                                               ),
                                             ),
                                           ],
                                         ),
                                       ),
-                                    ),
-
-                                    // Menampilkan data aplikasi atau desain berdasarkan isActiveApp
-                                    ...?isActiveApp
-                                        ? myPortofolioData?.projects?.app?.map(
-                                            (app) => Padding(
-                                              padding:
-                                                  const EdgeInsets.all(12.0),
-                                              child: AppCardWidget(
-                                                onPress: () async {
-                                                  await _launchURL(app.link
-                                                      .toString()); // Panggil fungsi _launchURL dengan parameter URL
-                                                },
-                                                buildMethod: (app.buildWith !=
-                                                            null &&
-                                                        app.buildWith!
-                                                            .isNotEmpty)
-                                                    ? app.buildWith!.join(', ')
-                                                    : 'No Build Method',
-                                                image: app.image.toString(),
-                                                name: app.name ?? 'no name',
-                                                date: app.date ?? 'No Date',
-                                                description: app.description ??
-                                                    'No Description',
-                                                onTap: () {},
-                                              ),
-                                            ),
-                                          )
-                                        : myPortofolioData?.projects?.design
-                                            ?.map(
-                                            (design) => Padding(
-                                                padding:
-                                                    const EdgeInsets.all(12.0),
-                                                child: AppCardWidget(
-                                                  onPress: () async {
-                                                    await _launchURL(design.link
-                                                        .toString()); // Panggil fungsi _launchURL dengan parameter URL
-                                                  },
-                                                  buildMethod:
-                                                      (design.toolsUsed !=
-                                                                  null &&
-                                                              design.toolsUsed!
-                                                                  .isNotEmpty)
-                                                          ? design.toolsUsed!
-                                                              .join(', ')
-                                                          : 'No Build Method',
-                                                  image:
-                                                      design.image.toString(),
-                                                  name:
-                                                      design.name ?? 'no name',
-                                                  date:
-                                                      design.date ?? 'No Date',
-                                                  description:
-                                                      design.description ??
-                                                          'No Description',
-                                                  onTap: () {},
-                                                )),
-                                          ),
-                                  ],
-                                ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              height: 1300,
-              key: section4Key,
-              color: ColorStyle.black,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                          bottom: 12.0, left: 12.0, right: 12.0),
-                      child: Column(
-                        children: [
-                          Align(
-                            alignment: Alignment.center,
-                            child: Row(
-                              children: [
-                                Text('My Experiences', style: FontFamily.title),
-                                const SizedBox(width: 10),
-                                const Expanded(
-                                  child: Divider(
-                                    color: Colors.tealAccent,
-                                    thickness: 1,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          // Tambahkan pengecekan null
-                          if (myPortofolioData?.experience != null &&
-                              myPortofolioData!.experience!.isNotEmpty)
-                            for (var exp in myPortofolioData!.experience!)
-                              Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: ColorStyle.background,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        if (exp.name !=
-                                            null) // Cek null pada exp.name
-                                          Text(exp.name!,
-                                              style: FontFamily.sub),
-                                        if (exp.experienceName != null &&
-                                            exp.year != null)
-                                          Text(
-                                            '${exp.experienceName!} (${exp.year!})', // Gabungkan nama dan rentang tahun
-                                            style: FontFamily.italic,
-                                          ),
-                                        if (exp.description != null)
-                                          for (var desc in exp.description!)
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                    '• ', // Simbol bullet atau bisa diganti '*'
-                                                    style: FontFamily.reguler),
-                                                Expanded(
-                                                  child: Text(
-                                                    desc,
-                                                    style: FontFamily.reguler,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                        if (exp.link != null)
-                                          const SizedBox(height: 12),
-                                        Align(
-                                          alignment: Alignment.bottomRight,
-                                          child: SizedBox(
-                                            height: 48,
-                                            width: 200,
-                                            child: ElevatedButton(
-                                              onPressed: () async {
-                                                // ignore: deprecated_member_use
-                                                if (await canLaunch(
-                                                    exp.link!)) {
-                                                  await launch(exp.link!);
-                                                }
-                                              },
-                                              style: ButtonStyle(
-                                                shape: WidgetStateProperty.all<
-                                                    RoundedRectangleBorder>(
-                                                  RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                ),
-                                                backgroundColor:
-                                                    WidgetStateProperty.all<
-                                                        Color>(
-                                                  ColorStyle.primary,
-                                                ),
-                                              ),
-                                              child: Text('See Project',
-                                                  style: FontFamily.textButton),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              height: 500,
-              key: section5Key,
-              color: ColorStyle.black,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 40.0,
-                  left: 20,
-                ), // Menambahkan padding kanan
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1, // Memungkinkan kolom mengambil ruang
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(top: 12.0, left: 40.0),
-                            child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  RichText(
-                                    text: TextSpan(
-                                      style: FontFamily
-                                          .title, // Style untuk teks default
-                                      children: <TextSpan>[
-                                        TextSpan(
-                                            text: "Thank You for Your ",
-                                            style: FontFamily.title),
-                                        const TextSpan(
-                                          text:
-                                              "Attention!", // Teks yang ingin diubah warna
-                                          style: TextStyle(
-                                            color: ColorStyle
-                                                .primary, // Ganti dengan warna yang diinginkan
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 12,
-                                  ),
-                                  Text(
-                                    "Get in touch with me",
-                                    style: FontFamily.sub.copyWith(
-                                      fontSize: 24,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 12,
-                                  ),
-                                  SizedBox(
-                                    child: Text(
-                                      "I'm thrilled to share my experience with you! if you have any questions, want to collaborate, or just want to chat, feel free to reach out.",
-                                      style: FontFamily.reguler,
-                                      maxLines: 2,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 40,
-                                  ),
-                                  Row(
-                                    children: [
-                                      ContactWidget(
-                                        title: 'thiyaraal@gmail.com',
-                                        image: myPortofolioData
-                                                ?.biodata?.contact
-                                                ?.firstWhere((element) =>
-                                                    element.email != null)
-                                                .image ??
-                                            'assets/images/email.png',
-                                        onTap: () async {
-                                          await _launchURL(myPortofolioData
-                                                  ?.biodata?.contact
-                                                  ?.firstWhere((element) =>
-                                                      element.email != null)
-                                                  .email ??
-                                              '');
-                                        },
+                                      const SizedBox(
+                                        height: 12,
                                       ),
-                                      const SizedBox(width: 40),
+                                      Text(
+                                        "Get in touch with me",
+                                        style: FontFamily.sub.copyWith(
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 12,
+                                      ),
+                                      SizedBox(
+                                        child: Text(
+                                          "I'm thrilled to share my experience with you! if you have any questions, want to collaborate, or just want to chat, feel free to reach out.",
+                                          style: FontFamily.reguler.copyWith(
+                                            fontSize: 12,
+                                          ),
+                                          maxLines: 3,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 40,
+                                      ),
+                                      Row(
+                                        children: [
+                                          ContactWidget(
+                                            fontSize: 12,
+                                            heightImage: 18,
+                                            title: 'thiyaraal@gmail.com',
+                                            image: myPortofolioData
+                                                    ?.biodata?.contact
+                                                    ?.firstWhere((element) =>
+                                                        element.email != null)
+                                                    .image ??
+                                                'assets/images/email.png',
+                                            onTap: () async {
+                                              await _launchURL(myPortofolioData
+                                                      ?.biodata?.contact
+                                                      ?.firstWhere((element) =>
+                                                          element.email != null)
+                                                      .email ??
+                                                  '');
+                                            },
+                                          ),
+                                          const SizedBox(width: 40),
+                                          ContactWidget(
+                                            fontSize: 12,
+                                            heightImage: 18,
+                                            title: "thiyaraal",
+                                            image: myPortofolioData
+                                                    ?.biodata?.contact
+                                                    ?.firstWhere((element) =>
+                                                        element.linkedIn !=
+                                                        null)
+                                                    .image ??
+                                                'assets/images/linkdln.png',
+                                            onTap: () async {
+                                              await _launchURL(myPortofolioData
+                                                      ?.biodata?.contact
+                                                      ?.firstWhere((element) =>
+                                                          element.linkedIn !=
+                                                          null)
+                                                      .linkedIn ??
+                                                  '');
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 12),
+                                      Row(
+                                        children: [
+                                          ContactWidget(
+                                            fontSize: 12,
+                                            heightImage: 18,
+                                            title: 'thiyaraal',
+                                            image: myPortofolioData
+                                                    ?.biodata?.contact
+                                                    ?.firstWhere((element) =>
+                                                        element.github != null)
+                                                    .image ??
+                                                'assets/images/github.png',
+                                            onTap: () async {
+                                              String? githubUrl =
+                                                  myPortofolioData
+                                                          ?.biodata?.contact
+                                                          ?.firstWhere(
+                                                              (element) =>
+                                                                  element
+                                                                      .github !=
+                                                                  null)
+                                                          .github ??
+                                                      '';
+                                              print(
+                                                  'Mencoba membuka URL: $githubUrl'); // Debugging
+                                              await _launchURL(githubUrl);
+                                            },
+                                          ),
+                                          const SizedBox(width: 40),
+                                          ContactWidget(
+                                            fontSize: 12,
+                                            heightImage: 18,
+                                            title: "Thiyara Al-Mawaddah",
+                                            image: myPortofolioData
+                                                    ?.biodata?.contact
+                                                    ?.firstWhere((element) =>
+                                                        element.behance != null)
+                                                    .image ??
+                                                'assets/images/behance.png',
+                                            onTap: () async {
+                                              await _launchURL(myPortofolioData
+                                                      ?.biodata?.contact
+                                                      ?.firstWhere((element) =>
+                                                          element.behance !=
+                                                          null)
+                                                      .behance ??
+                                                  '');
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 12),
                                       ContactWidget(
+                                        fontSize: 12,
+                                        heightImage: 18,
                                         title: "thiyaraal",
                                         image: myPortofolioData
                                                 ?.biodata?.contact
                                                 ?.firstWhere((element) =>
-                                                    element.linkedIn != null)
+                                                    element.instagram != null)
                                                 .image ??
-                                            'assets/images/linkdln.png',
+                                            'assets/images/instagram.png',
                                         onTap: () async {
                                           await _launchURL(myPortofolioData
                                                   ?.biodata?.contact
                                                   ?.firstWhere((element) =>
-                                                      element.linkedIn != null)
-                                                  .linkedIn ??
+                                                      element.instagram != null)
+                                                  .instagram ??
                                               '');
                                         },
                                       ),
                                     ],
                                   ),
-                                  const SizedBox(height: 12),
-                                  Row(
-                                    children: [
-                                      ContactWidget(
-                                        title: 'thiyaraal',
-                                        image: myPortofolioData
-                                                ?.biodata?.contact
-                                                ?.firstWhere((element) =>
-                                                    element.github != null)
-                                                .image ??
-                                            'assets/images/github.png',
-                                        onTap: () async {
-                                          String? githubUrl = myPortofolioData
-                                                  ?.biodata?.contact
-                                                  ?.firstWhere((element) =>
-                                                      element.github != null)
-                                                  .github ??
-                                              '';
-                                          print(
-                                              'Mencoba membuka URL: $githubUrl'); // Debugging
-                                          await _launchURL(githubUrl);
-                                        },
-                                      ),
-                                      const SizedBox(width: 40),
-                                      ContactWidget(
-                                        title: "Thiyara Al-Mawaddah",
-                                        image: myPortofolioData
-                                                ?.biodata?.contact
-                                                ?.firstWhere((element) =>
-                                                    element.behance != null)
-                                                .image ??
-                                            'assets/images/behance.png',
-                                        onTap: () async {
-                                          await _launchURL(myPortofolioData
-                                                  ?.biodata?.contact
-                                                  ?.firstWhere((element) =>
-                                                      element.behance != null)
-                                                  .behance ??
-                                              '');
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 12),
-                                  ContactWidget(
-                                    title: "thiyaraal",
-                                    image: myPortofolioData?.biodata?.contact
-                                            ?.firstWhere((element) =>
-                                                element.instagram != null)
-                                            .image ??
-                                        'assets/images/instagram.png',
-                                    onTap: () async {
-                                      await _launchURL(myPortofolioData
-                                              ?.biodata?.contact
-                                              ?.firstWhere((element) =>
-                                                  element.instagram != null)
-                                              .instagram ??
-                                          '');
-                                    },
-                                  ),
-                                ],
+                                ),
                               ),
-                            ),
+                              Expanded(
+                                child: Align(
+                                  alignment: Alignment
+                                      .topRight, // Mengatur posisi gambar ke kanan
+                                  child: Image.asset(
+                                    'assets/images/bgbottom.png',
+                                    height: 220,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                    // Menggunakan Expanded agar gambar mengisi ruang tersisa
-                    Expanded(
-                      flex: 1,
-                      child: Align(
-                        alignment: Alignment
-                            .topRight, // Mengatur posisi gambar ke kanan
-                        child: Image.asset(
-                          'assets/images/bgbottom.png',
-                          height: 500,
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                      )
+                    : Container(
+                        height: 500,
+                        key: section5Key,
+                        color: ColorStyle.black,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            top: 40.0,
+                            left: 20,
+                          ), // Menambahkan padding kanan
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 1, // Memungkinkan kolom mengambil ruang
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 12.0, left: 40.0),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            RichText(
+                                              text: TextSpan(
+                                                style: FontFamily
+                                                    .title, // Style untuk teks default
+                                                children: <TextSpan>[
+                                                  TextSpan(
+                                                      text:
+                                                          "Thank You for Your ",
+                                                      style: FontFamily.title),
+                                                  const TextSpan(
+                                                    text:
+                                                        "Attention!", // Teks yang ingin diubah warna
+                                                    style: TextStyle(
+                                                      color: ColorStyle
+                                                          .primary, // Ganti dengan warna yang diinginkan
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 12,
+                                            ),
+                                            Text(
+                                              "Get in touch with me",
+                                              style: FontFamily.sub.copyWith(
+                                                fontSize: 24,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 12,
+                                            ),
+                                            SizedBox(
+                                              child: Text(
+                                                "I'm thrilled to share my experience with you! if you have any questions, want to collaborate, or just want to chat, feel free to reach out.",
+                                                style: FontFamily.reguler,
+                                                maxLines: 2,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              height: 40,
+                                            ),
+                                            Row(
+                                              children: [
+                                                ContactWidget(
+                                                  title: 'thiyaraal@gmail.com',
+                                                  image: myPortofolioData
+                                                          ?.biodata?.contact
+                                                          ?.firstWhere(
+                                                              (element) =>
+                                                                  element
+                                                                      .email !=
+                                                                  null)
+                                                          .image ??
+                                                      'assets/images/email.png',
+                                                  onTap: () async {
+                                                    await _launchURL(
+                                                        myPortofolioData
+                                                                ?.biodata
+                                                                ?.contact
+                                                                ?.firstWhere(
+                                                                    (element) =>
+                                                                        element
+                                                                            .email !=
+                                                                        null)
+                                                                .email ??
+                                                            '');
+                                                  },
+                                                ),
+                                                const SizedBox(width: 40),
+                                                ContactWidget(
+                                                  title: "thiyaraal",
+                                                  image: myPortofolioData
+                                                          ?.biodata?.contact
+                                                          ?.firstWhere(
+                                                              (element) =>
+                                                                  element
+                                                                      .linkedIn !=
+                                                                  null)
+                                                          .image ??
+                                                      'assets/images/linkdln.png',
+                                                  onTap: () async {
+                                                    await _launchURL(
+                                                        myPortofolioData
+                                                                ?.biodata
+                                                                ?.contact
+                                                                ?.firstWhere(
+                                                                    (element) =>
+                                                                        element
+                                                                            .linkedIn !=
+                                                                        null)
+                                                                .linkedIn ??
+                                                            '');
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 12),
+                                            Row(
+                                              children: [
+                                                ContactWidget(
+                                                  title: 'thiyaraal',
+                                                  image: myPortofolioData
+                                                          ?.biodata?.contact
+                                                          ?.firstWhere(
+                                                              (element) =>
+                                                                  element
+                                                                      .github !=
+                                                                  null)
+                                                          .image ??
+                                                      'assets/images/github.png',
+                                                  onTap: () async {
+                                                    String? githubUrl =
+                                                        myPortofolioData
+                                                                ?.biodata
+                                                                ?.contact
+                                                                ?.firstWhere(
+                                                                    (element) =>
+                                                                        element
+                                                                            .github !=
+                                                                        null)
+                                                                .github ??
+                                                            '';
+                                                    print(
+                                                        'Mencoba membuka URL: $githubUrl'); // Debugging
+                                                    await _launchURL(githubUrl);
+                                                  },
+                                                ),
+                                                const SizedBox(width: 40),
+                                                ContactWidget(
+                                                  title: "Thiyara Al-Mawaddah",
+                                                  image: myPortofolioData
+                                                          ?.biodata?.contact
+                                                          ?.firstWhere(
+                                                              (element) =>
+                                                                  element
+                                                                      .behance !=
+                                                                  null)
+                                                          .image ??
+                                                      'assets/images/behance.png',
+                                                  onTap: () async {
+                                                    await _launchURL(
+                                                        myPortofolioData
+                                                                ?.biodata
+                                                                ?.contact
+                                                                ?.firstWhere(
+                                                                    (element) =>
+                                                                        element
+                                                                            .behance !=
+                                                                        null)
+                                                                .behance ??
+                                                            '');
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 12),
+                                            ContactWidget(
+                                              title: "thiyaraal",
+                                              image: myPortofolioData
+                                                      ?.biodata?.contact
+                                                      ?.firstWhere((element) =>
+                                                          element.instagram !=
+                                                          null)
+                                                      .image ??
+                                                  'assets/images/instagram.png',
+                                              onTap: () async {
+                                                await _launchURL(myPortofolioData
+                                                        ?.biodata?.contact
+                                                        ?.firstWhere((element) =>
+                                                            element.instagram !=
+                                                            null)
+                                                        .instagram ??
+                                                    '');
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              // Menggunakan Expanded agar gambar mengisi ruang tersisa
+                              Expanded(
+                                flex: 1,
+                                child: Align(
+                                  alignment: Alignment
+                                      .topRight, // Mengatur posisi gambar ke kanan
+                                  child: Image.asset(
+                                    'assets/images/bgbottom.png',
+                                    height: 500,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+              },
             ),
           ],
         ),
